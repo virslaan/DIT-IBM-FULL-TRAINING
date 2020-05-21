@@ -1,0 +1,41 @@
+<h2 appHighlight highlightColor="yellow">View Employees</h2>
+
+<div *ngIf="showMessage" class="alert alert-success" role="alert">
+    Employee has been deleted successfully!!
+</div>
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let employee of employees"> <p>{{employee.id}} : {{employee.name}} - {{employee.salary}} <button class="btn btn-danger" (click)="deleteEmployee(employee.id)"> X </button><button class="btn btn-warning" (click)="editEmployee(employee)"> Edit </button></p></li>
+   
+  </ul>
+
+  <hr/>
+  <input type="text" #logMessage placeholder="Enter log message"/>
+  <button (click)="log(logMessage.value)">Log Message</button>
+  <hr/>
+  <p appHighlight highlightColor="red" *ngFor="let message of logService.logs">{{message}}</p>
+  
+  
+  
+  <p *ngIf="true">
+    Expression is true and ngIf is true.
+    This paragraph is in the DOM.
+  </p>
+  <ng-template ngIf="true">
+    <p>
+      Expression is true and ngIf is true.
+      This paragraph is in the DOM.
+    </p>
+  </ng-template>
+  <!-- <p *ngIf="showMessage">
+    Expression is false and ngIf is false.
+    This paragraph is not in the DOM.
+  </p>
+
+  <p [style.display]="'block'">
+    Expression sets display to "block".
+    This paragraph is visible.
+  </p>
+  <p [style.display]="'none'">
+    Expression sets display to "none".
+    This paragraph is hidden but still in the DOM.
+  </p> -->
